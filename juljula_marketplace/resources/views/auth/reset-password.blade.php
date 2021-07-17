@@ -4,15 +4,16 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="text-center mt-2"><h2>Se connecter</h2></div>
+                    <div class="text-center mt-2"><h2>Changer votre mot de passe</h2></div>
                     <div class="card-body">
-                        <form action="{{route('login')}}" method="post">@csrf
+                        <form action="{{route('password.update')}}" method="post">@csrf
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">
                                     Email
                                 </label>
                                 <div class="col-md-6 ">
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                           value="{{request('email')}}">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert"><strong>{{$message}}</strong></span>
                                     @enderror
@@ -20,7 +21,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">
-                                    Mot de passe
+                                    Nouveau mot de passe
                                 </label>
                                 <div class="col-md-6 ">
                                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
@@ -30,18 +31,20 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="remember" id="remember"
-                                        {{old('remember')?'checked':''}}>
-                                        <label for="label" class="form-check-label">Se souvenir de moi</label>
-                                        <p><a href="{{route('password.request')}}">Mot de passe oublié !!!</a></p>
-                                    </div>
+                                <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">
+                                    Confirmer mot de passe
+                                </label>
+                                <div class="col-md-6 ">
+                                    <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror">
+                                    @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert"><strong>{{$message}}</strong></span>
+                                    @enderror
                                 </div>
                             </div>
+                            <input type="hidden" name="token" value="{{request()->route("token")}}">
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-danger">Se connecter</button>
+                                    <button type="submit" class="btn btn-danger">Changer</button>
                                 </div>
                             </div>
                         </form>
