@@ -4,7 +4,12 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="text-center mt-2"><h2>Se connecter</h2></div>
+                    <div class="text-center mt-2">
+                        <h2>Se connecter</h2>
+                        @if(session('status'))
+                            <div class="alert alert-success">{{session('status')}}</div>
+                        @endif
+                    </div>
                     <div class="card-body">
                         <form action="{{route('login')}}" method="post">@csrf
                             <div class="form-group row">
