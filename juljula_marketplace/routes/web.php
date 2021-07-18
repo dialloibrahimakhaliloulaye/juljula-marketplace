@@ -27,3 +27,8 @@ Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
 Route::get('/auth', function () {
     return view('backend.admin.index');
 });
+
+Route::group(['prefix'=>'auth'], function (){
+    Route::resource('/category', 'App\Http\Controllers\CategoryController');
+
+});
