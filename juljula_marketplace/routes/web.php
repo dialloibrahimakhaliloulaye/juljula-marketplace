@@ -23,3 +23,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
+
+Route::get('/auth', function () {
+    return view('backend.admin.index');
+});
