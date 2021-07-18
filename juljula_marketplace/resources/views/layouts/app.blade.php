@@ -87,8 +87,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarHover">
-            <ul class="navbar-nav">
-
+            <ul class="container-fluid navbar-nav">
+                @for($i=0;$i<7;$i++)
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href=""
@@ -117,7 +117,7 @@
                     </ul>
 
                 </li>
-
+                @endfor
             </ul>
         </div>
     </nav>
@@ -171,11 +171,6 @@
 
 </style>
 <!--end second navbar-->
-<main class="py-4">
-    <div class="container">
-        @yield('content')
-    </div>
-</main>
 </div>
 </body>
 </html>
