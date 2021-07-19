@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryFormRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -62,11 +63,12 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $category=Category::find($id);
+        return view('backend.category.edit', compact('category'));
     }
 
     /**
@@ -74,11 +76,21 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $category=Category::find($id);
+        if($request->hasFile('image')){
+            Storage::delete($category->image);
+            $image=$request->file('image')->store('public/category');
+            $category->update([
+                'name'=>$request->name,
+                'image'=>$image
+            ]);
+        }
+        $category->update(['name'=>$request->name]);
+        return redirect()->route('category.index');
     }
 
     /**

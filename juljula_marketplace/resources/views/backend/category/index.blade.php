@@ -10,20 +10,27 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     @forelse($categories as $category)
                                         <tr>
                                             <td><img src="{{Storage::url($category->image)}}" alt=""></td>
                                             <td>{{$category->name}}</td>
-                                            <td><button class="btn btn-info"><i class="mdi mdi-table-edit"></i></button></td>
-                                            <td><button class="btn btn-danger"><i class="mdi mdi-delete"></i></button></td>
+                                            <td>
+                                                <a href="{{route('category.edit', [$category->id])}}">
+                                                    <button class="btn btn-info"><i class="mdi mdi-table-edit"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger"><i class="mdi mdi-delete"></i></button>
+                                            </td>
                                         </tr>
                                     @empty
                                         <td>No category to display</td>
