@@ -45,7 +45,7 @@ class CategoryController extends Controller
             'image'=>$image,
             'slug'=>Str::slug($name)
         ]);
-        return redirect()->back();
+        return redirect()->route('category.index')->with('message', 'Category créée avec succès');
     }
 
     /**
@@ -90,17 +90,21 @@ class CategoryController extends Controller
             ]);
         }
         $category->update(['name'=>$request->name]);
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('message', 'Category modifiée avec succès');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $category=Category::find($id);
+        if (Storage::delete($category->image)){
+            $category->delete();
+        }
+        return back()->with('message', 'Category supprimer avec succès');
     }
 }
