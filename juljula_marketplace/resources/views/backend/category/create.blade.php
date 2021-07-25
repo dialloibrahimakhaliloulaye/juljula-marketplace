@@ -2,8 +2,8 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
-
-            <h3>Ajouter une Category</h3>
+            @include('backend.inc.message')
+            <h3>Ajouter une Categorie</h3>
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card">

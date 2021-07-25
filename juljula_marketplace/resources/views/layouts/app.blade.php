@@ -88,36 +88,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarHover">
             <ul class="container-fluid navbar-nav">
-                @for($i=0;$i<7;$i++)
-
+                @foreach($menus as $menuItem)
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href=""
                        data-toggle="dropdown_remove_dropdown_class_for_clickable_link" aria-haspopup="true"
                        aria-expanded="false">
-                        Category(Electronics)
+                        {{$menuItem->name}}
                     </a>
-
                     <ul class="dropdown-menu">
-
-
+                        @foreach($menuItem->subcategories as $subMenuItem)
                         <li>
-                            <a class="dropdown-item dropdown-toggle" href="">Subcategory(Computer)</a>
-
+                            <a class="dropdown-item dropdown-toggle" href="">{{$subMenuItem->name}}</a>
                             <ul class="dropdown-menu">
-
+                                @foreach($subMenuItem->childcategories as $childMenuItem)
                                 <li>
-                                    <a class="dropdown-item" href="">childcategory(Dell laptop)
+                                    <a class="dropdown-item" href="">{{$childMenuItem->name}}
                                     </a>
                                 </li>
+                                @endforeach
                             </ul>
-
                         </li>
-
-
+                            @endforeach
                     </ul>
-
                 </li>
-                @endfor
+                @endforeach
             </ul>
         </div>
     </nav>

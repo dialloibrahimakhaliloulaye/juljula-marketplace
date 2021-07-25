@@ -23,14 +23,42 @@
                 </div>
             </li>
 
-            <li class="nav-item2">
+            <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false"
                    aria-controls="ui-basic1">
+                    <i class="mdi mdi-circle-outline menu-icon"></i>
+                    <span class="menu-title">Sous-catégorie</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="ui-basic1">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('subcategory.create')}}">Ajouter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('subcategory.index')}}">Gérer</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false"
+                   aria-controls="ui-basic3">
+                    <i class="mdi mdi-circle-outline menu-icon"></i>
+                    <span class="menu-title">Sous sous-catégorie</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="ui-basic3">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('childcategory.create')}}">Ajouter</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('childcategory.index')}}">Gérer</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item2">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
+                   aria-controls="ui-basic2">
                     <i class="mdi mdi-circle-outline menu-icon"></i>
                     <span class="menu-title">UI Elements 2</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="ui-basic1">
+                <div class="collapse" id="ui-basic2">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Buttons1</a></li>
                         <li class="nav-item"><a class="nav-link"

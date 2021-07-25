@@ -2,21 +2,19 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
-
-            <h3>Mettre à jour une Categorie</h3>
+            @include('backend.inc.message')
+            <h3>Mettre à jour une sous sous-category</h3>
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card">
                         <div class="card-body">
-                            <form class="forms-sample" action="{{route('category.update', [$category->id])}}"
-                                  method="post" enctype="multipart/form-data">@csrf
+                            <form class="forms-sample" action="{{route('childcategory.update', [$childcategory->id])}}" method="post" >@csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="name">Name</label>
+                                 <div class="form-group">
+                                    <label for="name">Nom</label>
                                     <input type="text" name="name"
                                            class="form-control @error('name') is-invalid @enderror"
-                                           placeholder="name of category"
-                                           value="{{$category->name}}">
+                                           value="{{$childcategory->name}}">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>
@@ -26,10 +24,14 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="image">Image</label>
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                           name="image">
-                                    @error('image')
+                                    <label for="name">Choisir la sous-catégorie</label>
+                                    <select name="subcategory_id" class="form-control @error('subcategory_id') is-invalid @enderror">
+                                        <option value="">sélectionner la sous-catégorie</option>
+                                        @foreach(App\Models\Subcategory::all() as $subcategory)
+                                            <option value="{{$subcategory->id}}" {{$childcategory->subcategory_id==$subcategory->id ? 'selected':''}}>{{$subcategory->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('subcategory_id')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>
                                                 {{ $message }}
@@ -38,7 +40,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
                                 </div>
                             </form>
                         </div>
