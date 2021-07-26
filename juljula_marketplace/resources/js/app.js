@@ -9,6 +9,7 @@ Vue.component('exemple-component', require('./components/ExempleComponent.vue').
 Vue.component('first-image', require('./components/imagePreview/FirstImage.vue').default);
 Vue.component('second-image', require('./components/imagePreview/SecondImage.vue').default);
 Vue.component('third-image', require('./components/imagePreview/ThirdImage.vue').default);
+Vue.component('category-dropdown', require('./components/CategoryDropDown.vue').default);
 
 const app = new Vue({
     el:'#app',

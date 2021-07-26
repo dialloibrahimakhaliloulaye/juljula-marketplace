@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div>
-        <exemple-component />
     </div>
     <div class="container">
         <div class="row">
@@ -51,30 +50,7 @@
                             </div>
                             <label for="file" class="mt-2"><b>Choisir une catégorie</b></label>
                             <div class="form-inline form-group mt-1">
-                                <div class="col-md-4">
-                                    <select class="form-control" name="category_id" id="">
-                                        <option value="">Choisir la catégorie</option>
-                                        @foreach(\App\Models\Category::all() as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="subcategory_id" id="">
-                                        <option value="">Choisir la sous-catégorie</option>
-                                        @foreach(\App\Models\Subcategory::all() as $subcategory)
-                                            <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="childcategory_id" id="">
-                                        <option value="">Choisir la sous sous-catégorie</option>
-                                        @foreach(\App\Models\Childcategory::all() as $childcategory)
-                                            <option value="{{$childcategory->id}}">{{$childcategory->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <category-dropdown/>
                             </div>
                             <div class="form-group">
                                 <label for="">Nom</label>

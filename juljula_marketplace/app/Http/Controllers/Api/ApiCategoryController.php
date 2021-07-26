@@ -16,15 +16,15 @@ class ApiCategoryController extends Controller
         return response()->json($category);
     }
 
-    public function getSubcategory()
+    public function getSubcategory(Request $request)
     {
-        $subcategory=Subcategory::where('category_id', 8)->get();
+        $subcategory=Subcategory::where('category_id', $request->category_id)->get();
         return response()->json($subcategory);
     }
 
-    public function getChildcategory()
+    public function getChildcategory(Request $request)
     {
-        $childcategory=Childcategory::where('subcategory_id', 7);
+        $childcategory=Childcategory::where('subcategory_id', $request->subcategory_id)->get();
         return response()->json($childcategory);
     }
 }
