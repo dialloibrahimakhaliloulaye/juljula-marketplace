@@ -40,13 +40,13 @@
                             <label for="file" class="mt-2"><b>Télécharger 3 images</b></label>
                             <div class="form-inline form-group mt-1">
                                 <div class="col-md-4">
-                                    <input type="file" name="first_image" accept="image/*">
+                                    <first-image/>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="file" name="second_image" accept="image/*">
+                                    <second-image/>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="file" name="third_image" accept="image/*">
+                                    <third-image/>
                                 </div>
                             </div>
                             <label for="file" class="mt-2"><b>Choisir une catégorie</b></label>
@@ -123,18 +123,4 @@
             </div>
         </div>
     </div>
-    <style>
-        .vertical-menu a {
-            background-color: #fff;
-            color: #000;
-            display: block;
-            padding: 12px;
-            text-decoration: none;
-        }
-
-        .vertical-menu a:hover {
-            background-color: green;
-            color: #fff;
-        }
-    </style>
 @endsection
