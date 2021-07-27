@@ -13,11 +13,12 @@ class AdvertisementController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $ads=Advertisement::where('user_id', auth()->user()->id)->get();
+        return view('ads.index', compact('ads'));
     }
 
     /**
