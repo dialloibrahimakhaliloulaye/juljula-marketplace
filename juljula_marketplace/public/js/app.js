@@ -38045,12 +38045,7 @@ var render = function() {
   return _c("div", [
     _c("input", {
       staticClass: "custom-file-upload",
-      attrs: {
-        type: "file",
-        name: "first_image",
-        required: "",
-        accept: "image/*"
-      },
+      attrs: { type: "file", name: "first_image", accept: "image/*" },
       on: { change: _vm.onFileChange }
     }),
     _vm._v(" "),
@@ -38087,12 +38082,7 @@ var render = function() {
   return _c("div", [
     _c("input", {
       staticClass: "custom-file-upload",
-      attrs: {
-        type: "file",
-        name: "second_image",
-        required: "",
-        accept: "image/*"
-      },
+      attrs: { type: "file", name: "second_image", accept: "image/*" },
       on: { change: _vm.onFileChange }
     }),
     _vm._v(" "),
@@ -38129,12 +38119,7 @@ var render = function() {
   return _c("div", [
     _c("input", {
       staticClass: "custom-file-upload",
-      attrs: {
-        type: "file",
-        name: "third_image",
-        required: "",
-        accept: "image/*"
-      },
+      attrs: { type: "file", name: "third_image", accept: "image/*" },
       on: { change: _vm.onFileChange }
     }),
     _vm._v(" "),

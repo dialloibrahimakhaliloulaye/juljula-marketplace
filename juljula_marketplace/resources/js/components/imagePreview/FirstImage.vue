@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="file" name="first_image" class="custom-file-upload" required="" @change="onFileChange" accept="image/*">
+        <input type="file" name="first_image" class="custom-file-upload"  @change="onFileChange" accept="image/*">
         <div id="preview">
             <img width="100" height="60" v-if="url" :src="url">
         </div>

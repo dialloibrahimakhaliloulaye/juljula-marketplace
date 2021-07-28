@@ -7,8 +7,8 @@
     <div class="vertical-menu">
         <a href="">Tableau de bord</a>
         <a href="">Profile</a>
-        <a href="">Créer des annonces</a>
-        <a href="">Annonces publiées</a>
+        <a href="{{route('ads.create')}}" class="{{request()->is('ads/create')?'active':''}}">Créer des annonces</a>
+        <a href="{{route('ads.index')}}" class="{{request()->is('ads')?'active':''}}">Annonces publiées</a>
         <a href="">Annonces en cours</a>
         <a href="">Message</a>
     </div>

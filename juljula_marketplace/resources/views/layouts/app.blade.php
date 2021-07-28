@@ -175,6 +175,10 @@
             color: #fff;
         }
 
+        .vertical-menu a.active {
+            background-color: green;
+            color: #fff;
+        }
 </style>
 <!--end second navbar-->
 </div>

@@ -38,7 +38,12 @@ Route::group(['prefix'=>'auth'], function (){
 Route::get('/', 'App\Http\Controllers\MenuController@menu');
 
 //ads
-Route::get('/ads/create', 'App\Http\Controllers\AdvertisementController@create')->middleware('auth');
+Route::get('/ads/create', 'App\Http\Controllers\AdvertisementController@create')->name('ads.create')->middleware('auth');
 Route::post('/ads/store', 'App\Http\Controllers\AdvertisementController@store')->middleware('auth')
     ->name('ads.store');
-Route::get('/ads', 'App\Http\Controllers\AdvertisementController@index')->middleware('auth');
+Route::get('/ads', 'App\Http\Controllers\AdvertisementController@index')->name('ads.index')->middleware('auth');
+Route::get('/ads/{id}/edit', 'App\Http\Controllers\AdvertisementController@edit')->name('ads.edit')->middleware('auth');
+Route::put('/ads/{id}/update', 'App\Http\Controllers\AdvertisementController@update')->name('ads.update')->middleware('auth');
+
+//profile
+Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile.index')->middleware('auth');
