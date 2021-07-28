@@ -9,7 +9,21 @@
                 <div class="card">
                     <div class="card-header">Modifier le profile</div>
                     <div class="card-body">
-
+                        <div class="form-group">
+                            <label for="">Prénom et nom</label>
+                            <input type="text" class="form-control" value="{{auth()->user()->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Adresse</label>
+                            <input type="text" class="form-control" value="{{auth()->user()->address}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Photo profile</label>
+                            <img src="{{auth()->user()->avatar}}" alt="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger">Metter à jour</button>
                     </div>
                 </div>
             </div>
