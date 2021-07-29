@@ -10,10 +10,19 @@ use App\Models\Advertisement;
 
 class FrontendController extends Controller
 {
-    public function findBySubcategory($categorySlug, Subcategory $subcategorySlug)
+    public function findBySubcategory(Request $request, $categorySlug, Subcategory $subcategorySlug)
     {
-        $advertisements=$subcategorySlug->ads;
+        $advertisementBasedOnFilter=Advertisement::where('subcategory_id', $subcategorySlug->id)
+            ->when($request->minPrice, function ($query, $minPrice){
+                return $query->where('price','>=', $minPrice);
+            })->when($request->maxPrice, function ($query,$maxPrice){
+                return $query->where('price','<=', $maxPrice);
+            })->get();
+
+        $advertisementWithoutFilter=$subcategorySlug->ads;
         $filterByChildcategories=$subcategorySlug->ads->unique('childcategory_id');
+        $advertisements=$request->minPrice||$request->maxPrice?
+        $advertisementBasedOnFilter:$advertisementWithoutFilter;
         return view('product.subcategory', compact('advertisements','filterByChildcategories'));
     }
 
@@ -21,6 +30,6 @@ class FrontendController extends Controller
     {
         $advertisements=$childcategorySlug->ads;
         $filterByChildcategories=$subcategorySlug->ads->unique('childcategory_id');
-        return view('product.childcategory', compact('advertisements','filterByChildcategories'));
+        return view('product.childcategory', compact('filterByChildcategories', 'advertisements'));
     }
 }

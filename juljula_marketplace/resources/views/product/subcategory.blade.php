@@ -17,6 +17,24 @@
                     </div>
 
                 </div>
+                <br>
+                <form action="{{url()->current()}}">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="">Prix minimum</label>
+                                <input type="text" name="minPrice" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Prix maximum</label>
+                                <input type="text" name="maxPrice" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger">Chercher</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-md-9">
                 <div class="row">
