@@ -7,9 +7,9 @@
                 <div class="card">
                     <div class="card-header text-white text-center" style="background-color: forestgreen;">Filter ::</div>
                     <div class="card-body">
-                        @foreach($filterByChildcategories as $filterByChildcategory)
+                        @foreach($filterBySubcategories as $filterBySubcategory)
                             <p>
-                                <a href="{{($filterByChildcategory->childcategory->slug)??''}}"><b>{{$filterByChildcategory->childcategory->name??''}}</b></a>
+                                <a href="{{url()->current()}}/{{($filterBySubcategory->slug)??''}}"><b>{{$filterBySubcategory->name??''}}</b></a>
                             </p>
                         @endforeach
 
@@ -18,23 +18,6 @@
 
                 </div>
                 <br>
-                <form action="{{url()->current()}}">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="">Prix minimum</label>
-                                <input type="text" name="minPrice" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Prix maximum</label>
-                                <input type="text" name="maxPrice" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Chercher</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
             <div class="col-md-9">
                 <div class="row">

@@ -9,7 +9,7 @@
                     <div class="card-body">
                         @foreach($filterByChildcategories as $filterByChildcategory)
                         <p>
-                            <a href="{{url()->current()}}/{{($filterByChildcategory->childcategory->slug)??''}}">{{$filterByChildcategory->childcategory->name??''}}</a>
+                            <a href="{{url()->current()}}/{{($filterByChildcategory->childcategory->slug)??''}}"><b>{{$filterByChildcategory->childcategory->name??''}}</b></a>
                         </p>
                         @endforeach
 
@@ -30,7 +30,7 @@
                                 <input type="text" name="maxPrice" class="form-control">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Chercher</button>
+                                <button type="submit" class="btn btn-success">Chercher</button>
                             </div>
                         </div>
                     </div>

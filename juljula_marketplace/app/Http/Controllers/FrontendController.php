@@ -49,4 +49,11 @@ class FrontendController extends Controller
         return view('product.childcategory',
             compact('filterByChildcategories', 'advertisements'));
     }
+
+    public function findBycategory(Category $categorySlug)
+    {
+        $advertisements=$categorySlug->ads;
+        $filterBySubcategories=Subcategory::where('category_id', $categorySlug->id)->get();
+        return view('product.category', compact('advertisements', 'filterBySubcategories'));
+    }
 }

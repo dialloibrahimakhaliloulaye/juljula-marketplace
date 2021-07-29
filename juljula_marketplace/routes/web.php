@@ -53,3 +53,4 @@ Route::post('/profile', 'App\Http\Controllers\ProfileController@updateProfile')-
 //frontend
 Route::get('/product/{categorySlug}/{subcategorySlug}','App\Http\Controllers\FrontendController@findBySubcategory')->name('subcategory.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}','App\Http\Controllers\FrontendController@findByChildcategory')->name('childcategory.show');
+Route::get('/product/{categorySlug}','App\Http\Controllers\FrontendController@findBycategory')->name('category.show');

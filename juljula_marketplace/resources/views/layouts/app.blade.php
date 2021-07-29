@@ -90,16 +90,16 @@
                 <ul class="container-fluid navbar-nav">
                     @foreach($menus as $menuItem)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href=""
+                            <a class="nav-link dropdown-toggle" href="{{route('category.show', $menuItem->slug)}}"
                                data-toggle="dropdown_remove_dropdown_class_for_clickable_link" aria-haspopup="true"
                                aria-expanded="false">
-                                {{$menuItem->name}}
+                                <b>{{$menuItem->name}}</b>
                             </a>
                             <ul class="dropdown-menu">
                                 @foreach($menuItem->subcategories as $subMenuItem)
                                     <li>
                                         <a class="dropdown-item dropdown-toggle" href="{{route('subcategory.show', [
-                                            $menuItem->slug, $subMenuItem->slug])}}">{{$subMenuItem->name}}
+                                            $menuItem->slug, $subMenuItem->slug])}}"><b>{{$subMenuItem->name}}</b>
                                         </a>
                                         <ul class="dropdown-menu">
                                             @foreach($subMenuItem->childcategories as $childMenuItem)
@@ -108,7 +108,7 @@
                                                         $menuItem->slug,
                                                         $subMenuItem->slug,
                                                         $childMenuItem->slug
-                                                        ])}}">{{$childMenuItem->name}}
+                                                        ])}}"><b>{{$childMenuItem->name}}</b>
                                                     </a>
                                                 </li>
                                             @endforeach
