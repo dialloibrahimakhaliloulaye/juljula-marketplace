@@ -44,6 +44,7 @@ Route::post('/ads/store', 'App\Http\Controllers\AdvertisementController@store')-
 Route::get('/ads', 'App\Http\Controllers\AdvertisementController@index')->name('ads.index')->middleware('auth');
 Route::get('/ads/{id}/edit', 'App\Http\Controllers\AdvertisementController@edit')->name('ads.edit')->middleware('auth');
 Route::put('/ads/{id}/update', 'App\Http\Controllers\AdvertisementController@update')->name('ads.update')->middleware('auth');
+Route::delete('/ads/{id}/delete', 'App\Http\Controllers\AdvertisementController@destroy')->name('ads.destroy')->middleware('auth');
 
 //profile
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile')->middleware('auth');
