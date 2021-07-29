@@ -49,3 +49,6 @@ Route::delete('/ads/{id}/delete', 'App\Http\Controllers\AdvertisementController@
 //profile
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile')->middleware('auth');
 Route::post('/profile', 'App\Http\Controllers\ProfileController@updateProfile')->name('update.profile')->middleware('auth');
+
+//frontend
+Route::get('/product/{categorySlug}/{subcategorySlug}','App\Http\Controllers\FrontendController@findBySubcategory')->name('subcategory.show');
