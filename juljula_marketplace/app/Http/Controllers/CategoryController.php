@@ -45,7 +45,7 @@ class CategoryController extends Controller
             'image'=>$image,
             'slug'=>Str::slug($name)
         ]);
-        return redirect()->route('category.index')->with('message', 'Category créée avec succès');
+        return redirect()->route('category.index')->with('message', 'Categorie créée avec succès');
     }
 
     /**

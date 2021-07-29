@@ -8,9 +8,9 @@
                     <div class="card-header text-white text-center" style="background-color: forestgreen;">Filter ::</div>
                     <div class="card-body">
                         @foreach($filterByChildcategories as $filterByChildcategory)
-                        <p>
-                            <a href="{{url()->current()}}/{{($filterByChildcategory->childcategory->slug)??''}}">{{$filterByChildcategory->childcategory->name??''}}</a>
-                        </p>
+                            <p>
+                                <a href="{{($filterByChildcategory->childcategory->slug)??''}}">{{$filterByChildcategory->childcategory->name??''}}</a>
+                            </p>
                         @endforeach
 
 
@@ -21,12 +21,12 @@
             <div class="col-md-9">
                 <div class="row">
                     @forelse($advertisements as $advertisement)
-                    <div class="col-3">
-                        <img src="{{Storage::url($advertisement->first_image)}}" class="img-thumbnail">
-                        <p class="text-center  card-footer" style="color: blue;">
-                            <b>{{$advertisement->name}} / {{$advertisement->price}} FCFA </b>
-                        </p>
-                    </div>
+                        <div class="col-3">
+                            <img src="{{Storage::url($advertisement->first_image)}}" class="img-thumbnail">
+                            <p class="text-center  card-footer" style="color: blue;">
+                                <b>{{$advertisement->name}} / {{$advertisement->price}} FCFA </b>
+                            </p>
+                        </div>
 
 
                     @empty

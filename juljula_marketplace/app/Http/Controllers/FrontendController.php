@@ -13,6 +13,14 @@ class FrontendController extends Controller
     public function findBySubcategory($categorySlug, Subcategory $subcategorySlug)
     {
         $advertisements=$subcategorySlug->ads;
-        return view('product.subcategory', compact('advertisements'));
+        $filterByChildcategories=$subcategorySlug->ads->unique('childcategory_id');
+        return view('product.subcategory', compact('advertisements','filterByChildcategories'));
+    }
+
+    public function findByChildcategory($categorySlug,Subcategory $subcategorySlug,Childcategory $childcategorySlug)
+    {
+        $advertisements=$childcategorySlug->ads;
+        $filterByChildcategories=$subcategorySlug->ads->unique('childcategory_id');
+        return view('product.childcategory', compact('advertisements','filterByChildcategories'));
     }
 }
