@@ -37,14 +37,29 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Vidéo demo : </p>
+                        {!! $advertisement->displayVideoFromLink() !!}
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
                 <h1>{{$advertisement->name}}</h1>
-                <p><b>Prix : {{$advertisement->price}} FCFA</b>, {{$advertisement->price_status}}</p>
-                <p>Postée : {{$advertisement->created_at->diffForHumans()}}</p>
+                <p>Prix : <b>{{$advertisement->price}} FCFA</b>, {{$advertisement->price_status}}</p>
+                <p>Postée : <b>{{$advertisement->created_at->diffForHumans()}}</b></p>
+                <p>Condition du produit : <b>{{$advertisement->product_condition}}</b></p>
                 <hr>
+                @if(!$advertisement->user->avatar)
                 <img src="/img/man.jpg" width="120">
-                <p>Nom du vendeur</p>
+                @else
+                    <img src="{{Storage::url($advertisement->user->avatar)}}" width="130">
+                @endif
+                <p>{{$advertisement->user->name}}</p>
+                <p>Adresse du vendeur : <b>{{$advertisement->listing_location}}</b></p>
+                <p>Téléphone : <b>{{$advertisement->phone_number}}</b></p>
+
             </div>
         </div>
     </div>

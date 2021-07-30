@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
 
+        Cohensive\Embed\EmbedServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +231,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Embed' => Cohensive\Embed\Facades\Embed::class,
 
     ],
 
