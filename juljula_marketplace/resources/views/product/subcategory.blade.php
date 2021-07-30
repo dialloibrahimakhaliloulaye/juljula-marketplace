@@ -5,12 +5,13 @@
         <div class="row ">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header text-white text-center" style="background-color: forestgreen;">Filter ::</div>
+                    <div class="card-header text-white text-center" style="background-color: forestgreen;">Filter ::
+                    </div>
                     <div class="card-body">
                         @foreach($filterByChildcategories as $filterByChildcategory)
-                        <p>
-                            <a href="{{url()->current()}}/{{($filterByChildcategory->childcategory->slug)??''}}"><b>{{$filterByChildcategory->childcategory->name??''}}</b></a>
-                        </p>
+                            <p>
+                                <a href="{{url()->current()}}/{{($filterByChildcategory->childcategory->slug)??''}}"><b>{{$filterByChildcategory->childcategory->name??''}}</b></a>
+                            </p>
                         @endforeach
 
 
@@ -39,12 +40,14 @@
             <div class="col-md-9">
                 <div class="row">
                     @forelse($advertisements as $advertisement)
-                    <div class="col-3">
-                        <img src="{{Storage::url($advertisement->first_image)}}" class="img-thumbnail">
-                        <p class="text-center  card-footer" style="color: blue;">
-                            <b>{{$advertisement->name}} / {{$advertisement->price}} FCFA </b>
-                        </p>
-                    </div>
+                        <div class="col-3">
+                            <a href="{{route('product.view', [$advertisement->id, $advertisement->slug])}}">
+                                <img src="{{Storage::url($advertisement->first_image)}}" class="img-thumbnail">
+                                <p class="text-center  card-footer" style="color: blue;">
+                                    <b>{{$advertisement->name}} / {{$advertisement->price}} FCFA </b>
+                                </p>
+                            </a>
+                        </div>
 
 
                     @empty
