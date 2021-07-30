@@ -33,7 +33,7 @@
                 <div>
                     <div class="card">
                         <div class="card-body">
-                            <p>{{$advertisement->description}}</p>
+                            <p>{!! $advertisement->description !!}</p>
                         </div>
                     </div>
                 </div>
