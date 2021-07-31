@@ -94,7 +94,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarHover">
-                <ul class="container-fluid navbar-nav">
+                <ul class="container navbar-nav">
                     @foreach($menus as $menuItem)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="{{route('category.show', $menuItem->slug)}}"
