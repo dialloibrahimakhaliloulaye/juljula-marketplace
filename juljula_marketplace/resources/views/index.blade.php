@@ -32,9 +32,10 @@
     <div class="container mt-5">
         <span>
             <h2>Multimédia</h2>
-            <a href="#" class="float-right">View all</a>
+            <a href="{{route('category.show', $category->slug)}}" class="float-right">View all</a>
 
         </span>
+        <br>
         <div id="carouselExampleFade" class="carousel slide " data-ride="carousel" data-interval="4000">
             <div class="carousel-inner">
 
@@ -42,7 +43,10 @@
                     <div class="row">
                         @forelse($firstAds as $firstAd)
                             <div class="col-3">
-                                <img src="{{Storage::url($firstAd->first_image)}}" class="img-thumbnail" style="min-height: 150px">
+                                <a href="{{route('ads.show', [$firstAd->id, $firstAd->slug])}}">
+                                    <img src="{{Storage::url($firstAd->first_image)}}" class="img-thumbnail"
+                                         style="min-height: 150px">
+                                </a>
                                 <p class="text-center  card-footer" style="color: blue;">
                                     {{$firstAd->name}} / {{$firstAd->price}} FCFA
                                 </p>
@@ -56,7 +60,10 @@
                     <div class="row">
                         @forelse($secondAds as $secondAd)
                             <div class="col-3">
-                                <img src="{{Storage::url($secondAd->first_image)}}" class="img-thumbnail" style="min-height: 150px">
+                                <a href="{{route('ads.show', [$secondAd->id, $secondAd->slug])}}">
+                                    <img src="{{Storage::url($secondAd->first_image)}}" class="img-thumbnail"
+                                         style="min-height: 150px">
+                                </a>
                                 <p class="text-center  card-footer">
                                     {{$secondAd->name}} / {{$secondAd->price}} FCFA
                                 </p>
@@ -65,7 +72,6 @@
                         @endforelse
                     </div>
                 </div>
-
 
 
             </div>
