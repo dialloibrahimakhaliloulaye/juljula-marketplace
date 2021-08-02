@@ -59,7 +59,11 @@
                 <p>{{$advertisement->user->name}}</p>
                 <p>Adresse du vendeur : <b>{{$advertisement->listing_location}}</b></p>
                 <p>Téléphone : <b>{{$advertisement->phone_number}}</b></p>
-
+                <span>
+                    @if(Auth()->check())
+                    <message></message>
+                    @endif  
+                </span>
             </div>
         </div>
     </div>
