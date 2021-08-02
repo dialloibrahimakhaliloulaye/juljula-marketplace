@@ -27,4 +27,14 @@ class Category extends Model
     public function subcategories(){
         return $this->hasMany(Subcategory::class);
     }
+
+    //scope
+    public function scopeCategoryMultimedia($query)
+    {
+        return $query->where('name', 'multimedia')->first();
+    }
+    public function scopeCategoryImmobilier($query)
+    {
+        return $query->where('name', 'immobilier')->first();
+    }
 }

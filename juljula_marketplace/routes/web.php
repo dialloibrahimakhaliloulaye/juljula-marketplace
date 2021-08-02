@@ -35,7 +35,7 @@ Route::group(['prefix'=>'auth'], function (){
     Route::resource('/childcategory', 'App\Http\Controllers\ChildcategoryController');
 });
 
-Route::get('/', 'App\Http\Controllers\MenuController@menu');
+Route::get('/', 'App\Http\Controllers\FrontAdsController@index');
 
 //ads
 Route::get('/ads/create', 'App\Http\Controllers\AdvertisementController@create')->name('ads.create')->middleware('auth');
@@ -54,5 +54,5 @@ Route::post('/profile', 'App\Http\Controllers\ProfileController@updateProfile')-
 Route::get('/product/{categorySlug}/{subcategorySlug}','App\Http\Controllers\FrontendController@findBySubcategory')->name('subcategory.show');
 Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}','App\Http\Controllers\FrontendController@findByChildcategory')->name('childcategory.show');
 Route::get('/product/{categorySlug}','App\Http\Controllers\FrontendController@findBycategory')->name('category.show');
-Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show')->name('product.view');
+//Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show')->name('product.view');
 Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show')->name('ads.show');

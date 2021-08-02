@@ -36,7 +36,7 @@
 
         </span>
         <br>
-        <div id="carouselExampleFade" class="carousel slide " data-ride="carousel" data-interval="4000">
+        <div id="carouselExampleFade{{$category->id}}" class="carousel slide " data-ride="carousel" data-interval="4000">
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
@@ -75,11 +75,67 @@
 
 
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleFade{{$category->id}}" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleFade{{$category->id}}" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <span>
+            <h2>Immobilier</h2>
+            <a href="{{route('category.show', $categoryImmobiliers->slug)}}" class="float-right">View all</a>
+
+        </span>
+        <br>
+        <div id="carouselExampleFade{{$categoryImmobiliers->id}}" class="carousel slide " data-ride="carousel" data-interval="4000">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="row">
+                        @forelse($firstAdsForImmobiliers as $firstAdsForImmobilier)
+                            <div class="col-3">
+                                <a href="{{route('ads.show', [$firstAdsForImmobilier->id, $firstAdsForImmobilier->slug])}}">
+                                    <img src="{{Storage::url($firstAdsForImmobilier->first_image)}}" class="img-thumbnail"
+                                         style="min-height: 150px">
+                                </a>
+                                <p class="text-center  card-footer" style="color: blue;">
+                                    {{$firstAdsForImmobilier->name}} / {{$firstAdsForImmobilier->price}} FCFA
+                                </p>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row">
+                        @forelse($secondAdsForImmobiliers as $secondAdsForImmobilier)
+                            <div class="col-3">
+                                <a href="{{route('ads.show', [$secondAdsForImmobilier->id, $secondAdsForImmobilier->slug])}}">
+                                    <img src="{{Storage::url($secondAdsForImmobilier->first_image)}}" class="img-thumbnail"
+                                         style="min-height: 150px">
+                                </a>
+                                <p class="text-center  card-footer">
+                                    {{$secondAdsForImmobilier->name}} / {{$secondAdsForImmobilier->price}} FCFA
+                                </p>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade{{$categoryImmobiliers->id}}" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade{{$categoryImmobiliers->id}}" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>

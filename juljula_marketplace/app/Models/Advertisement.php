@@ -31,4 +31,30 @@ class Advertisement extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //scope method for multimedia
+    public function scopeFirstFourAds($query, $categoryId)
+    {
+        return $query->where('category_id', $categoryId)->orderByDesc('id')->take(4)->get();
+    }
+
+    public function scopeSecondFourAds($query, $categoryId)
+    {
+        $firstAds=$this->scopeFirstFourAds($query, $categoryId);
+        return $query->where('category_id', $categoryId)->whereNotIn('id', $firstAds->pluck('id')->toArray())
+            ->take(4)->get();
+    }
+
+    //scope method for immobilier
+    public function scopeFirstFourImmobiliers($query, $categoryId)
+    {
+        return $query->where('category_id', $categoryId)->orderByDesc('id')->take(4)->get();
+    }
+
+    public function scopeSecondFourImmobiliers($query, $categoryId)
+    {
+        $firstAds=$this->scopeFirstFourImmobiliers($query, $categoryId);
+        return $query->where('category_id', $categoryId)->whereNotIn('id', $firstAds->pluck('id')->toArray())
+            ->take(4)->get();
+    }
 }
