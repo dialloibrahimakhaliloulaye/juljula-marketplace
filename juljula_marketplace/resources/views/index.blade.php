@@ -45,7 +45,7 @@
                             <div class="col-3">
                                 <a href="{{route('ads.show', [$firstAd->id, $firstAd->slug])}}">
                                     <img src="{{Storage::url($firstAd->first_image)}}" class="img-thumbnail"
-                                         style="min-height: 150px">
+                                         style="min-height: 150px" width="170">
                                 </a>
                                 <p class="text-center  card-footer" style="color: blue;">
                                     {{$firstAd->name}} / {{$firstAd->price}} FCFA
@@ -62,7 +62,7 @@
                             <div class="col-3">
                                 <a href="{{route('ads.show', [$secondAd->id, $secondAd->slug])}}">
                                     <img src="{{Storage::url($secondAd->first_image)}}" class="img-thumbnail"
-                                         style="min-height: 150px">
+                                         style="min-height: 150px" width="170">
                                 </a>
                                 <p class="text-center  card-footer">
                                     {{$secondAd->name}} / {{$secondAd->price}} FCFA
@@ -101,7 +101,7 @@
                             <div class="col-3">
                                 <a href="{{route('ads.show', [$firstAdsForImmobilier->id, $firstAdsForImmobilier->slug])}}">
                                     <img src="{{Storage::url($firstAdsForImmobilier->first_image)}}" class="img-thumbnail"
-                                         style="min-height: 150px">
+                                         style="min-height: 150px" width="170">
                                 </a>
                                 <p class="text-center  card-footer" style="color: blue;">
                                     {{$firstAdsForImmobilier->name}} / {{$firstAdsForImmobilier->price}} FCFA
@@ -115,10 +115,10 @@
                 <div class="carousel-item">
                     <div class="row">
                         @forelse($secondAdsForImmobiliers as $secondAdsForImmobilier)
-                            <div class="col-3">
+                            <div class="col-3 " >
                                 <a href="{{route('ads.show', [$secondAdsForImmobilier->id, $secondAdsForImmobilier->slug])}}">
                                     <img src="{{Storage::url($secondAdsForImmobilier->first_image)}}" class="img-thumbnail"
-                                         style="min-height: 150px">
+                                         style="min-height: 150px" width="170">
                                 </a>
                                 <p class="text-center  card-footer">
                                     {{$secondAdsForImmobilier->name}} / {{$secondAdsForImmobilier->price}} FCFA
