@@ -24,12 +24,10 @@ Route::get('/home', function () {
 
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
 
-Route::get('/auth', function () {
-    return view('backend.admin.index');
-});
 
 //admin
-Route::group(['prefix'=>'auth'], function (){
+Route::group(['prefix'=>'auth', 'middleware'=>'admin'], function (){
+    Route::get('/', function () { return view('backend.admin.index');});
     Route::resource('/category', 'App\Http\Controllers\CategoryController');
     Route::resource('/subcategory', 'App\Http\Controllers\SubcategoryController');
     Route::resource('/childcategory', 'App\Http\Controllers\ChildcategoryController');
