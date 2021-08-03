@@ -45,6 +45,7 @@
                 if(this.body==''){
                     alert("vous n'avez rien saisi")
                 }
+                return;
                 axios.post('/send/message',{
                     body:this.body,
                     receiverId:this.receiverId,
