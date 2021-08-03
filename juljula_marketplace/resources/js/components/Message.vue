@@ -10,18 +10,19 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Discuter avec {{sellerName}}
-                            {{userId}}{{receiverId}}{{adId}}
+
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="ecrivez votre message ici"></textarea>
+                        <textarea v-model="body" cols="30" rows="10" class="form-control" placeholder="ecrivez votre message ici"></textarea>
+                        <p v-if="successMessage" style="color: green">Message envoyé</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Envoyer</button>
+                        <button type="button" class="btn btn-primary" @click.prevent="sendMessage()">Envoyer</button>
                     </div>
                 </div>
             </div>
@@ -32,6 +33,26 @@
 <script>
     export default {
         props:['sellerName', 'userId', 'receiverId', 'adId'],
+
+        data(){
+            return{
+                body:'',
+                successMessage:false,
+            };
+        },
+        methods:{
+            sendMessage(){
+                axios.post('/send/message',{
+                    body:this.body,
+                    receiverId:this.receiverId,
+                    userId:this.userId,
+                    adId:this.adId
+                }).then((response)=>{
+                    this.body=''
+                    this.successMessage=true
+                })
+            }
+        }
 
     };
 </script>

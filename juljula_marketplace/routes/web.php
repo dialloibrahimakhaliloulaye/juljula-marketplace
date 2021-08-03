@@ -54,3 +54,6 @@ Route::get('/product/{categorySlug}/{subcategorySlug}/{childcategorySlug}','App\
 Route::get('/product/{categorySlug}','App\Http\Controllers\FrontendController@findBycategory')->name('category.show');
 //Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show')->name('product.view');
 Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show')->name('ads.show');
+
+//Message
+Route::post('/send/message', 'SendMessageController@store');
