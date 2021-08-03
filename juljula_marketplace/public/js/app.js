@@ -1989,7 +1989,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      users: [],
+      messages: [],
+      selectedUserId: ''
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/users').then(function (response) {
+      _this.users = response.data;
+    });
+  },
+  methods: {
+    showMessage: function showMessage(userId) {
+      var _this2 = this;
+
+      axios.get('/message/user/' + userId).then(function (response) {
+        _this2.messages = response.data;
+        _this2.selectedUserId = userId;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -38738,27 +38767,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-2" }, [
-          _vm._v("\n            list des utilisateurs\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-10" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header text-centered" }, [
-              _c("span", [_vm._v("Chat")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body chat-msg" }, [
-              _c("ul", { staticClass: "chat" }, [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-2" },
+        _vm._l(_vm.users, function(user, index) {
+          return _c("p", { key: index }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.showMessage(user.id)
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(user.name) +
+                    "\n                "
+                )
+              ]
+            )
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-10" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body chat-msg" },
+            _vm._l(_vm.messages, function(message, index) {
+              return _c("ul", { key: index, staticClass: "chat" }, [
                 _c("li", { staticClass: "sender clearfix" }, [
                   _c("span", { staticClass: "chat-img clearfix mx-2" }, [
                     _vm._v(
@@ -38767,68 +38815,90 @@ var staticRenderFns = [
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "chat-body2 clearfix" }, [
-                    _c("div", { staticClass: "header clearfix" }, [
-                      _c("strong", [_vm._v("Nom")]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "rigth text-muted" }, [
-                        _c("span", [
-                          _vm._v(
-                            "\n                                            date\n                                        "
-                          )
-                        ])
-                      ])
-                    ]),
+                    _vm._m(1, true),
                     _vm._v(" "),
-                    _c("p", [_vm._v("message")])
+                    _c("p", [_vm._v(_vm._s(message.body))])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("li", { staticClass: "buyer clearfix" }, [
-                  _c("span", { staticClass: "chat-img rigth clearfix mx-2" }, [
-                    _vm._v(
-                      "\n                                image\n                            "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "chat-body clearfix" }, [
-                    _c("div", { staticClass: "header clearfix" }, [
-                      _c("strong", { staticClass: "right primary-font" }, [
-                        _vm._v("Nom")
-                      ]),
-                      _vm._v(" "),
-                      _c("small", { staticClass: "rigth text-muted" }, [
-                        _c("span", [
-                          _vm._v(
-                            "\n                                            date\n                                        "
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v("message")])
-                  ])
-                ])
+                _vm._m(2, true)
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer" }, [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  staticClass: "form-control input-sm",
-                  attrs: {
-                    type: "text",
-                    placeholder: "ecrivez votre message ici"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "input-group-btn" }, [
-                  _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("Envoyer")
-                  ])
-                ])
-              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _vm._m(3)
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-centered" }, [
+      _c("span", [_vm._v("Chat")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header clearfix" }, [
+      _c("strong", [_vm._v("Nom")]),
+      _vm._v(" "),
+      _c("small", { staticClass: "rigth text-muted" }, [
+        _c("span", [
+          _vm._v(
+            "\n                                            date\n                                        "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "buyer clearfix" }, [
+      _c("span", { staticClass: "chat-img rigth clearfix mx-2" }, [
+        _vm._v(
+          "\n                                image\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat-body clearfix" }, [
+        _c("div", { staticClass: "header clearfix" }, [
+          _c("strong", { staticClass: "right primary-font" }, [_vm._v("Nom")]),
+          _vm._v(" "),
+          _c("small", { staticClass: "rigth text-muted" }, [
+            _c("span", [
+              _vm._v(
+                "\n                                            date\n                                        "
+              )
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("message")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "input-group" }, [
+        _c("input", {
+          staticClass: "form-control input-sm",
+          attrs: { type: "text", placeholder: "ecrivez votre message ici" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "input-group-btn" }, [
+          _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Envoyer")])
         ])
       ])
     ])

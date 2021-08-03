@@ -2,7 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                list des utilisateurs
+                <p v-for="(user,index) in users" :key="index">
+                    <a href="" @click.prevent="showMessage(user.id)">
+                        {{user.name}}
+                    </a>
+                </p>
             </div>
             <div class="col-md-10">
                 <div class="card">
@@ -10,7 +14,7 @@
                         <span>Chat</span>
                     </div>
                     <div class="card-body chat-msg">
-                        <ul class="chat">
+                        <ul class="chat" v-for="(message,index) in messages" :key="index">
                             <li class="sender clearfix">
                                 <span class="chat-img clearfix mx-2">
                                     image
@@ -24,7 +28,7 @@
                                             </span>
                                         </small>
                                     </div>
-                                    <p>message</p>
+                                    <p>{{message.body}}</p>
                                 </div>
                             </li>
                             <li class="buyer clearfix">
@@ -60,7 +64,28 @@
 </template>
 
 <script>
-export default {}
+export default {
+    data(){
+        return{
+            users:[],
+            messages:[],
+            selectedUserId:''
+        }
+    },
+    mounted(){
+        axios.get('/users').then((response)=>{
+            this.users=response.data
+        })
+    },
+    methods:{
+        showMessage(userId){
+            axios.get('/message/user/'+userId).then((response)=>{
+                this.messages=response.data
+                this.selectedUserId=userId
+            })
+        }
+    }
+}
 </script>
 
 <style scoped>
