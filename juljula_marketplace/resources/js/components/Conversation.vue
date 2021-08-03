@@ -21,7 +21,7 @@
                                 </span>
                                 <div class="chat-body2 clearfix">
                                     <div class="header clearfix">
-                                        <strong>Nom</strong>
+                                        <strong class="primary-font">{{message.user.name}}</strong>
                                         <small class="rigth text-muted">
                                             <span>
                                                 date
@@ -37,7 +37,7 @@
                                 </span>
                                 <div class="chat-body clearfix">
                                     <div class="header clearfix">
-                                        <strong class="right primary-font">Nom</strong>
+                                        <strong class="right primary-font">nom</strong>
                                         <small class="rigth text-muted">
                                             <span>
                                                 date

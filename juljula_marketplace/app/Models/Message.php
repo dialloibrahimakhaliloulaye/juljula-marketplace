@@ -15,8 +15,19 @@ class Message extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function receiver()
     {
         return $this->belongsTo(User::class, 'receiver_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ads()
+    {
+        return $this->belongsTo(Advertisement::class, 'ad_id', 'id');
     }
 }
