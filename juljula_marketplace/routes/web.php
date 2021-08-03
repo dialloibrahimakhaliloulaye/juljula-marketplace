@@ -56,4 +56,4 @@ Route::get('/product/{categorySlug}','App\Http\Controllers\FrontendController@fi
 Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show')->name('ads.show');
 
 //Message
-Route::post('/send/message', 'SendMessageController@store');
+Route::post('/send/message', 'App\Http\Controllers\SendMessageController@store');

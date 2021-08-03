@@ -1995,6 +1995,10 @@ __webpack_require__.r(__webpack_exports__);
     sendMessage: function sendMessage() {
       var _this = this;
 
+      if (this.body == '') {
+        alert("vous n'avez rien saisi");
+      }
+
       axios.post('/send/message', {
         body: this.body,
         receiverId: this.receiverId,
