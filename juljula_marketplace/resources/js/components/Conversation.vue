@@ -15,7 +15,7 @@
                                 <span class="chat-img clearfix mx-2">
                                     image
                                 </span>
-                                <div class="chat-body clearfix">
+                                <div class="chat-body2 clearfix">
                                     <div class="header clearfix">
                                         <strong>Nom</strong>
                                         <small class="rigth text-muted">
@@ -27,7 +27,7 @@
                                     <p>message</p>
                                 </div>
                             </li>
-                            <li class="sender clearfix">
+                            <li class="buyer clearfix">
                                 <span class="chat-img rigth clearfix mx-2">
                                     image
                                 </span>
@@ -62,3 +62,81 @@
 <script>
 export default {}
 </script>
+
+<style scoped>
+    .chat{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .chat li{
+        margin-bottom: 40px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+        height: 10px;
+        width: 80%;
+    }
+    .chat li .chat-body p{
+        margin: 0;
+    }
+    .chat-msg{
+        overflow-y: scroll;
+        height: 350px;
+    }
+    .chat-msg .chat-img{
+        width: 50px;
+        height: 50px;
+    }
+    .chat-msg .img-circle{
+        border-radius: 50%;
+    }
+    .chat-msg .chat-img{
+        display: inline-block;
+    }
+    .chat-msg .chat-body{
+        display: inline-block;
+        max-width: 80%;
+        background-color: #FFC195;
+        border-radius: 12.5px;
+        padding: 15px;
+    }
+    .chat-msg .chat-body2
+    {
+        display: inline-block;
+        max-width: 80%;
+        background-color:#ccc;
+        border-radius: 12.5px;
+        padding: 15px;
+    }
+    .chat-msg .chat-body strong
+    {
+        color: #0169DA;
+    }
+
+    .chat-msg .buyer
+    {
+        text-align: right ;
+        float: right;
+    }
+    .chat-msg .buyer p
+    {
+        text-align: left ;
+    }
+    .chat-msg .sender
+    {
+        text-align: left ;
+        float: left;
+    }
+    .chat-msg .left
+    {
+        float: left;
+    }
+    .chat-msg .right
+    {
+        float: right;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+</style>
