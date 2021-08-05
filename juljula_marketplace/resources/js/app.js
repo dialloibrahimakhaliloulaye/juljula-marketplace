@@ -5,6 +5,9 @@ require('./bootstrap');
 window.Vue=require('vue');
 window.axios=require('axios');
 
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
+
 Vue.component('exemple-component', require('./components/ExempleComponent.vue').default);
 Vue.component('first-image', require('./components/imagePreview/FirstImage.vue').default);
 Vue.component('second-image', require('./components/imagePreview/SecondImage.vue').default);
