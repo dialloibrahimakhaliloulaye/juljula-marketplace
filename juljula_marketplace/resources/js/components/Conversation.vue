@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body chat-msg">
                         <ul class="chat" v-for="(message,index) in messages" :key="index">
-                            <li class="sender clearfix">
+                            <li class="sender clearfix" v-if="message.selfOwned">
                                 <span class="chat-img clearfix mx-2">
                                     image
                                 </span>
@@ -31,20 +31,26 @@
                                     <p>{{message.body}}</p>
                                 </div>
                             </li>
-                            <li class="buyer clearfix">
+                            <li class="buyer clearfix" v-else>
                                 <span class="chat-img rigth clearfix mx-2">
                                     image
                                 </span>
                                 <div class="chat-body clearfix">
                                     <div class="header clearfix">
-                                        <strong class="right primary-font">nom</strong>
+                                        <strong class="right primary-font">{{message.user.name}}</strong>
                                         <small class="rigth text-muted">
                                             <span>
                                                 date
                                             </span>
                                         </small>
                                     </div>
-                                    <p>message</p>
+                                    <p class="text-center" v-if="message.ads">
+                                        <a :href=" '/products/'+message.ads.id+'/'+message.ads.slug " target="_blank">
+                                            {{message.ads.name}}
+                                            <img :src="'/storage/'+(message.ads.first_image.substring(7))" width="120">
+                                        </a>
+                                    </p>
+                                    <p>{{ message.body }}</p>
                                 </div>
                             </li>
                         </ul>
