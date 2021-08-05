@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SendMessageController extends Controller
 {
@@ -42,5 +43,15 @@ class SendMessageController extends Controller
             ->orWhere('user_id', auth()->user()->id)
             ->where('receiver_id', $id)->get();
         return $messages;
+    }
+
+    public function startConversation(Request $request)
+    {
+        $message=Message::create([
+           'user_id'=>Auth::user()->id,
+            'receiver_id'=>$request->receiverId,
+            'body'=>$request->body
+        ]);
+        return $message->load('user');
     }
 }

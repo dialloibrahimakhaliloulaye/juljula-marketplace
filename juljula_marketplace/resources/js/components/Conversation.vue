@@ -57,9 +57,10 @@
                     </div>
                     <div class="card-footer">
                         <div class="input-group">
-                            <input type="text" class="form-control input-sm" placeholder="ecrivez votre message ici">
+                            <input v-model="body" id="btn-input" type="text" class="form-control input-sm"
+                                   placeholder="ecrivez votre message ici">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary">Envoyer</button>
+                                <button class="btn btn-primary" @click.prevent="sendMessage()">Envoyer</button>
                             </span>
                         </div>
                     </div>
@@ -75,7 +76,8 @@ export default {
         return{
             users:[],
             messages:[],
-            selectedUserId:''
+            selectedUserId:'',
+            body:''
         }
     },
     mounted(){
@@ -89,9 +91,18 @@ export default {
                 this.messages=response.data
                 this.selectedUserId=userId
             })
+        },
+        sendMessage(){
+            axios.post('/start-conversation',{
+                body:this.body,
+                receiverId:this.selectedUserId
+            }).then((response)=>{
+                this.messages.push(response.data);
+                this.body=''
+            })
         }
     }
-}
+};
 </script>
 
 <style scoped>

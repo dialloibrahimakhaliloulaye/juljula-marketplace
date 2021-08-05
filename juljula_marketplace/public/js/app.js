@@ -1999,12 +1999,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       users: [],
       messages: [],
-      selectedUserId: ''
+      selectedUserId: '',
+      body: ''
     };
   },
   mounted: function mounted() {
@@ -2021,6 +2023,18 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/message/user/' + userId).then(function (response) {
         _this2.messages = response.data;
         _this2.selectedUserId = userId;
+      });
+    },
+    sendMessage: function sendMessage() {
+      var _this3 = this;
+
+      axios.post('/start-conversation', {
+        body: this.body,
+        receiverId: this.selectedUserId
+      }).then(function (response) {
+        _this3.messages.push(response.data);
+
+        _this3.body = '';
       });
     }
   }
@@ -38894,7 +38908,51 @@ var render = function() {
             0
           ),
           _vm._v(" "),
-          _vm._m(3)
+          _c("div", { staticClass: "card-footer" }, [
+            _c("div", { staticClass: "input-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body"
+                  }
+                ],
+                staticClass: "form-control input-sm",
+                attrs: {
+                  id: "btn-input",
+                  type: "text",
+                  placeholder: "ecrivez votre message ici"
+                },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "input-group-btn" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.sendMessage()
+                      }
+                    }
+                  },
+                  [_vm._v("Envoyer")]
+                )
+              ])
+            ])
+          ])
         ])
       ])
     ])
@@ -38930,23 +38988,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                                            date\n                                        "
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer" }, [
-      _c("div", { staticClass: "input-group" }, [
-        _c("input", {
-          staticClass: "form-control input-sm",
-          attrs: { type: "text", placeholder: "ecrivez votre message ici" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "input-group-btn" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Envoyer")])
-        ])
       ])
     ])
   }
