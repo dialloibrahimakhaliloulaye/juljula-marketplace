@@ -16,8 +16,11 @@
                     <div class="card-body chat-msg" v-chat-scroll>
                         <ul class="chat" v-for="(message,index) in messages" :key="index">
                             <li class="sender clearfix" v-if="message.selfOwned">
-                                <span class="chat-img clearfix mx-2">
-                                    image
+                                <span class="chat-img left clearfix mx-2" v-if="message.user.avatar">
+                                    <img :src="'/storage/'+(message.user.avatar.substring(7))" width="50">
+                                </span>
+                                <span class="chat-img left clearfix mx-2" v-else>
+                                    <img :src=" '/img/man.jpg' " width="50">
                                 </span>
                                 <div class="chat-body2 clearfix">
                                     <div class="header clearfix">
@@ -32,13 +35,16 @@
                                 </div>
                             </li>
                             <li class="buyer clearfix" v-else>
-                                <span class="chat-img rigth clearfix mx-2">
-                                    image
+                                <span class="chat-img rigth clearfix mx-2" v-if="message.user.avatar">
+                                    <img :src="'/storage/'+(message.user.avatar.substring(7))" width="50">
+                                </span>
+                                <span class="chat-img rigth clearfix mx-2" v-else>
+                                    <img :src=" '/img/man.jpg' " width="50">
                                 </span>
                                 <div class="chat-body clearfix">
                                     <div class="header clearfix">
                                         <strong class="right primary-font">{{message.user.name}}</strong>
-                                        <small class="rigth text-muted">
+                                        <small class="left text-muted">
                                             <span>
                                                 date
                                             </span>

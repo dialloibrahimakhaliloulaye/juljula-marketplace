@@ -70,9 +70,10 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     @if(Auth::check() && Auth::user()->isAdmin==1)
-                                        <a class="dropdown-item" href="{{ url('auth') }}">{{ __('Dashboard') }}</a>
+                                        <a class="dropdown-item" href="{{ url('auth') }}">{{ __('Tableau de bord') }}</a>
                                     @else
                                         <a class="dropdown-item" href="{{ url('ads') }}">{{ __('Annonces') }}</a>
+                                        <a class="dropdown-item" href="{{ url('messages') }}">{{ __('Messages') }}</a>
                                     @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
