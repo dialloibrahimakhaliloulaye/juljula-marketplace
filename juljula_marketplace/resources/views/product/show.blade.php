@@ -61,11 +61,13 @@
                 <p>Téléphone : <b>{{$advertisement->phone_number}}</b></p>
                 <span>
                     @if(Auth()->check())
-                    <message seller-name="{{$advertisement->user->name}}"
-                         :user-id="{{auth()->user()->id}}"
-                         :receiver-id="{{$advertisement->user->id}}"
-                         :ad-id="{{$advertisement->id}}"
-                    ></message>
+                        @if(auth()->user()->id!=$advertisement->user->id)
+                            <message seller-name="{{$advertisement->user->name}}"
+                                 :user-id="{{auth()->user()->id}}"
+                                 :receiver-id="{{$advertisement->user->id}}"
+                                 :ad-id="{{$advertisement->id}}"
+                            ></message>
+                        @endif
                     @endif
                 </span>
             </div>
