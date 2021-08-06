@@ -58,7 +58,11 @@
                 @endif
                 <p>{{$advertisement->user->name}}</p>
                 <p>Adresse du vendeur : <b>{{$advertisement->listing_location}}</b></p>
-                <p>Téléphone : <b>{{$advertisement->phone_number}}</b></p>
+                <p>
+                    @if($advertisement->phone_number)
+                        <show-phone-number :phone-number="{{$advertisement->phone_number}}"></show-phone-number>
+                    @endif
+                </p>
                 <span>
                     @if(Auth()->check())
                         @if(auth()->user()->id!=$advertisement->user->id)

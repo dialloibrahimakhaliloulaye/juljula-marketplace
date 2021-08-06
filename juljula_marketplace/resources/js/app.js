@@ -15,6 +15,7 @@ Vue.component('third-image', require('./components/imagePreview/ThirdImage.vue')
 Vue.component('category-dropdown', require('./components/CategoryDropDown.vue').default);
 Vue.component('message', require('./components/Message.vue').default);
 Vue.component('conversation', require('./components/Conversation.vue').default);
+Vue.component('show-phone-number', require('./components/ShowPhoneNumber.vue').default);
 
 const app = new Vue({
     el:'#app',
