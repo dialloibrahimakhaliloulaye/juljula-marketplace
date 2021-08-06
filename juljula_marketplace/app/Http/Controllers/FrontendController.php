@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Childcategory;
 use App\Models\Subcategory;
@@ -57,9 +58,18 @@ class FrontendController extends Controller
         return view('product.category', compact('advertisements', 'filterBySubcategories'));
     }
 
+    //show individual ad
     public function show($id, $slug)
     {
         $advertisement=Advertisement::where('id', $id)->where('slug', $slug)->first();
         return view('product.show', compact('advertisement'));
+    }
+
+    //show user ad
+    public function viewUserAds($id)
+    {
+        $advertisement=Advertisement::where('user_id', $id)->paginate(12);
+        $user=User::find($id);
+        return view('seller.ads', compact('advertisement', 'user'));
     }
 }
