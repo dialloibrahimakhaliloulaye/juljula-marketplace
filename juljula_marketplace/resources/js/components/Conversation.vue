@@ -27,7 +27,7 @@
                                         <strong class="primary-font">{{message.user.name}}</strong>
                                         <small class="rigth text-muted">
                                             <span>
-                                                date
+                                                {{moment(message.created_at).format('LLL')}}
                                             </span>
                                         </small>
                                     </div>
@@ -46,7 +46,7 @@
                                         <strong class="right primary-font">{{message.user.name}}</strong>
                                         <small class="left text-muted">
                                             <span>
-                                                date
+                                                {{moment(message.created_at).format('LLL')}}
                                             </span>
                                         </small>
                                     </div>
@@ -77,13 +77,16 @@
 </template>
 
 <script>
+import moment from 'moment'
+moment.locale('fr');
 export default {
     data(){
         return{
             users:[],
             messages:[],
             selectedUserId:'',
-            body:''
+            body:'',
+            moment:moment
         }
     },
     mounted(){
