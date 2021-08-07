@@ -3,13 +3,13 @@
         <!-- Button trigger modal -->
         <p v-if="showViewConversationOnSuccess">
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#staticBackdrop">
-                Envoyer un message
+                <i class="fas fa-envelope"></i> Envoyer un message
             </button>
         </p>
         <p v-else>
             <a href="/messages">
                 <button type="button" class="btn btn-primary">
-                    Voir la discussion
+                    <i class="fas fa-paper-plane"></i> Voir la discussion
                 </button>
             </a>
         </p>

@@ -3,8 +3,14 @@
         <div class="row">
             <div class="col-md-2">
                 <p v-for="(user,index) in users" :key="index">
+                    <span v-if="user.avatar">
+                        <img :src="'/storage/'+(user.avatar.substring(7))" width="70" style="border-radius: 50%">
+                    </span>
+                    <span v-else>
+                        <img :src=" '/img/man.jpg' " alt="" width="70" style="border-radius: 50%">
+                    </span>
                     <a href="" @click.prevent="showMessage(user.id)">
-                        {{user.name}}
+                        <p>{{user.name}}</p>
                     </a>
                 </p>
             </div>
@@ -13,7 +19,7 @@
                     <div class="card-header text-centered">
                         <span>Chat</span>
                     </div>
-                    <div class="card-body chat-msg" v-chat-scroll>
+                    <div class="card-body chat-msg" v-chat-scroll="{always: false, smooth: true}" v-if="selectedUserId">
                         <ul class="chat" v-for="(message,index) in messages" :key="index">
                             <li class="sender clearfix" v-if="message.selfOwned">
                                 <span class="chat-img left clearfix mx-2" v-if="message.user.avatar">
@@ -61,6 +67,9 @@
                             </li>
                         </ul>
                     </div>
+                    <div v-else style="min-height: 250px">
+                        <p class="text-center">Veuillez slectionner l'utilisateur avec qui vous voulez discuter</p>
+                    </div>
                     <div class="card-footer">
                         <div class="input-group">
                             <input v-model="body" id="btn-input" type="text" class="form-control input-sm"
@@ -105,6 +114,14 @@ export default {
             })
         },
         sendMessage(){
+            if (this.selectedUserId ===''){
+                alert("Veuillez slectionner l'utilisateur avec qui vous voulez discuter")
+                return;
+            }
+            if (this.body ===''){
+                alert("vous n'avez rien saisi")
+                return;
+            }
             axios.post('/start-conversation',{
                 body:this.body,
                 receiverId:this.selectedUserId

@@ -2008,6 +2008,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 moment__WEBPACK_IMPORTED_MODULE_0___default().locale('fr');
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2041,6 +2050,16 @@ moment__WEBPACK_IMPORTED_MODULE_0___default().locale('fr');
     },
     sendMessage: function sendMessage() {
       var _this3 = this;
+
+      if (this.selectedUserId === '') {
+        alert("Veuillez slectionner l'utilisateur avec qui vous voulez discuter");
+        return;
+      }
+
+      if (this.body === '') {
+        alert("vous n'avez rien saisi");
+        return;
+      }
 
       axios.post('/start-conversation', {
         body: this.body,
@@ -60465,6 +60484,23 @@ var render = function() {
         { staticClass: "col-md-2" },
         _vm._l(_vm.users, function(user, index) {
           return _c("p", { key: index }, [
+            user.avatar
+              ? _c("span", [
+                  _c("img", {
+                    staticStyle: { "border-radius": "50%" },
+                    attrs: {
+                      src: "/storage/" + user.avatar.substring(7),
+                      width: "70"
+                    }
+                  })
+                ])
+              : _c("span", [
+                  _c("img", {
+                    staticStyle: { "border-radius": "50%" },
+                    attrs: { src: "/img/man.jpg", alt: "", width: "70" }
+                  })
+                ]),
+            _vm._v(" "),
             _c(
               "a",
               {
@@ -60476,13 +60512,7 @@ var render = function() {
                   }
                 }
               },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(user.name) +
-                    "\n                "
-                )
-              ]
+              [_c("p", [_vm._v(_vm._s(user.name))])]
             )
           ])
         }),
@@ -60493,148 +60523,171 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _vm._m(0),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
-              staticClass: "card-body chat-msg"
-            },
-            _vm._l(_vm.messages, function(message, index) {
-              return _c("ul", { key: index, staticClass: "chat" }, [
-                message.selfOwned
-                  ? _c("li", { staticClass: "sender clearfix" }, [
-                      message.user.avatar
-                        ? _c(
-                            "span",
-                            { staticClass: "chat-img left clearfix mx-2" },
-                            [
-                              _c("img", {
-                                attrs: {
-                                  src:
-                                    "/storage/" +
-                                    message.user.avatar.substring(7),
-                                  width: "50"
-                                }
-                              })
-                            ]
-                          )
-                        : _c(
-                            "span",
-                            { staticClass: "chat-img left clearfix mx-2" },
-                            [
-                              _c("img", {
-                                attrs: { src: "/img/man.jpg", width: "50" }
-                              })
-                            ]
-                          ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "chat-body2 clearfix" }, [
-                        _c("div", { staticClass: "header clearfix" }, [
-                          _c("strong", { staticClass: "primary-font" }, [
-                            _vm._v(_vm._s(message.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _c("small", { staticClass: "rigth text-muted" }, [
-                            _c("span", [
-                              _vm._v(
-                                "\n                                            " +
-                                  _vm._s(
-                                    _vm.moment(message.created_at).format("LLL")
-                                  ) +
-                                  "\n                                        "
-                              )
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v(_vm._s(message.body))])
-                      ])
-                    ])
-                  : _c("li", { staticClass: "buyer clearfix" }, [
-                      message.user.avatar
-                        ? _c(
-                            "span",
-                            { staticClass: "chat-img rigth clearfix mx-2" },
-                            [
-                              _c("img", {
-                                attrs: {
-                                  src:
-                                    "/storage/" +
-                                    message.user.avatar.substring(7),
-                                  width: "50"
-                                }
-                              })
-                            ]
-                          )
-                        : _c(
-                            "span",
-                            { staticClass: "chat-img rigth clearfix mx-2" },
-                            [
-                              _c("img", {
-                                attrs: { src: "/img/man.jpg", width: "50" }
-                              })
-                            ]
-                          ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "chat-body clearfix" }, [
-                        _c("div", { staticClass: "header clearfix" }, [
-                          _c("strong", { staticClass: "right primary-font" }, [
-                            _vm._v(_vm._s(message.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _c("small", { staticClass: "left text-muted" }, [
-                            _c("span", [
-                              _vm._v(
-                                "\n                                            " +
-                                  _vm._s(
-                                    _vm.moment(message.created_at).format("LLL")
-                                  ) +
-                                  "\n                                        "
-                              )
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        message.ads
-                          ? _c("p", { staticClass: "text-center" }, [
-                              _c(
-                                "a",
-                                {
-                                  attrs: {
-                                    href:
-                                      "/products/" +
-                                      message.ads.id +
-                                      "/" +
-                                      message.ads.slug,
-                                    target: "_blank"
-                                  }
-                                },
+          _vm.selectedUserId
+            ? _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "chat-scroll",
+                      rawName: "v-chat-scroll",
+                      value: { always: false, smooth: true },
+                      expression: "{always: false, smooth: true}"
+                    }
+                  ],
+                  staticClass: "card-body chat-msg"
+                },
+                _vm._l(_vm.messages, function(message, index) {
+                  return _c("ul", { key: index, staticClass: "chat" }, [
+                    message.selfOwned
+                      ? _c("li", { staticClass: "sender clearfix" }, [
+                          message.user.avatar
+                            ? _c(
+                                "span",
+                                { staticClass: "chat-img left clearfix mx-2" },
                                 [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(message.ads.name) +
-                                      "\n                                        "
-                                  ),
                                   _c("img", {
                                     attrs: {
                                       src:
                                         "/storage/" +
-                                        message.ads.first_image.substring(7),
-                                      width: "120"
+                                        message.user.avatar.substring(7),
+                                      width: "50"
                                     }
                                   })
                                 ]
                               )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c("p", [_vm._v(_vm._s(message.body))])
-                      ])
-                    ])
-              ])
-            }),
-            0
-          ),
+                            : _c(
+                                "span",
+                                { staticClass: "chat-img left clearfix mx-2" },
+                                [
+                                  _c("img", {
+                                    attrs: { src: "/img/man.jpg", width: "50" }
+                                  })
+                                ]
+                              ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "chat-body2 clearfix" }, [
+                            _c("div", { staticClass: "header clearfix" }, [
+                              _c("strong", { staticClass: "primary-font" }, [
+                                _vm._v(_vm._s(message.user.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("small", { staticClass: "rigth text-muted" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(
+                                        _vm
+                                          .moment(message.created_at)
+                                          .format("LLL")
+                                      ) +
+                                      "\n                                        "
+                                  )
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(message.body))])
+                          ])
+                        ])
+                      : _c("li", { staticClass: "buyer clearfix" }, [
+                          message.user.avatar
+                            ? _c(
+                                "span",
+                                { staticClass: "chat-img rigth clearfix mx-2" },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/storage/" +
+                                        message.user.avatar.substring(7),
+                                      width: "50"
+                                    }
+                                  })
+                                ]
+                              )
+                            : _c(
+                                "span",
+                                { staticClass: "chat-img rigth clearfix mx-2" },
+                                [
+                                  _c("img", {
+                                    attrs: { src: "/img/man.jpg", width: "50" }
+                                  })
+                                ]
+                              ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "chat-body clearfix" }, [
+                            _c("div", { staticClass: "header clearfix" }, [
+                              _c(
+                                "strong",
+                                { staticClass: "right primary-font" },
+                                [_vm._v(_vm._s(message.user.name))]
+                              ),
+                              _vm._v(" "),
+                              _c("small", { staticClass: "left text-muted" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(
+                                        _vm
+                                          .moment(message.created_at)
+                                          .format("LLL")
+                                      ) +
+                                      "\n                                        "
+                                  )
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            message.ads
+                              ? _c("p", { staticClass: "text-center" }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href:
+                                          "/products/" +
+                                          message.ads.id +
+                                          "/" +
+                                          message.ads.slug,
+                                        target: "_blank"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(message.ads.name) +
+                                          "\n                                        "
+                                      ),
+                                      _c("img", {
+                                        attrs: {
+                                          src:
+                                            "/storage/" +
+                                            message.ads.first_image.substring(
+                                              7
+                                            ),
+                                          width: "120"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(message.body))])
+                          ])
+                        ])
+                  ])
+                }),
+                0
+              )
+            : _c("div", { staticStyle: { "min-height": "250px" } }, [
+                _c("p", { staticClass: "text-center" }, [
+                  _vm._v(
+                    "Veuillez slectionner l'utilisateur avec qui vous voulez discuter"
+                  )
+                ])
+              ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer" }, [
             _c("div", { staticClass: "input-group" }, [
@@ -60745,21 +60798,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.showViewConversationOnSuccess
-      ? _c("p", [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary",
-              attrs: {
-                type: "button",
-                "data-toggle": "modal",
-                "data-target": "#staticBackdrop"
-              }
-            },
-            [_vm._v("\n            Envoyer un message\n        ")]
-          )
-        ])
-      : _c("p", [_vm._m(0)]),
+      ? _c("p", [_vm._m(0)])
+      : _c("p", [_vm._m(1)]),
     _vm._v(" "),
     _c(
       "div",
@@ -60793,7 +60833,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(2)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
@@ -60866,11 +60906,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-secondary",
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#staticBackdrop"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-envelope" }),
+        _vm._v(" Envoyer un message\n        ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/messages" } }, [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("\n                Voir la discussion\n            ")]
+        [
+          _c("i", { staticClass: "fas fa-paper-plane" }),
+          _vm._v(" Voir la discussion\n            ")
+        ]
       )
     ])
   },
@@ -60928,7 +60991,10 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Afficher Téléphone")]
+            [
+              _c("i", { staticClass: "fas fa-phone-volume" }),
+              _vm._v(" Afficher Téléphone")
+            ]
           )
         : _vm._e()
     ]),
