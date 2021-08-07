@@ -50,6 +50,7 @@
                 <p>Prix : <b>{{$advertisement->price}} FCFA</b>, {{$advertisement->price_status}}</p>
                 <p>Postée : <b>{{$advertisement->created_at->diffForHumans()}}</b></p>
                 <p>Condition du produit : <b>{{$advertisement->product_condition}}</b></p>
+                <save-ad></save-ad>
                 <hr>
                 @if(!$advertisement->user->avatar)
                 <img src="/img/man.jpg" width="120">

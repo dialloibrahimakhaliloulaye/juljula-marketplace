@@ -16,6 +16,7 @@ Vue.component('category-dropdown', require('./components/CategoryDropDown.vue').
 Vue.component('message', require('./components/Message.vue').default);
 Vue.component('conversation', require('./components/Conversation.vue').default);
 Vue.component('show-phone-number', require('./components/ShowPhoneNumber.vue').default);
+Vue.component('save-ad', require('./components/SaveAd.vue').default);
 
 const app = new Vue({
     el:'#app',
