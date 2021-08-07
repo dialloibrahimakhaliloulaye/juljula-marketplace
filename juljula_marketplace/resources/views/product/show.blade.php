@@ -50,13 +50,17 @@
                 <p>Prix : <b>{{$advertisement->price}} FCFA</b>, {{$advertisement->price_status}}</p>
                 <p>Postée : <b>{{$advertisement->created_at->diffForHumans()}}</b></p>
                 <p>Condition du produit : <b>{{$advertisement->product_condition}}</b></p>
-                <save-ad
-                    :ad-id="{{$advertisement->id}}"
-                    :user-id="{{auth()->user()->id}}"
-                ></save-ad>
+                @if(Auth::check())
+                    @if(!$advertisement->didUserSavedAd() && auth()->user()->id!=$advertisement->user->id))
+                        <save-ad
+                            :ad-id="{{$advertisement->id}}"
+                            :user-id="{{auth()->user()->id}}"
+                        ></save-ad>
+                    @endif
+                @endif
                 <hr>
                 @if(!$advertisement->user->avatar)
-                <img src="/img/man.jpg" width="120">
+                    <img src="/img/man.jpg" width="120">
                 @else
                     <img src="{{Storage::url($advertisement->user->avatar)}}" width="130">
                 @endif
@@ -71,9 +75,9 @@
                     @if(Auth()->check())
                         @if(auth()->user()->id!=$advertisement->user->id)
                             <message seller-name="{{$advertisement->user->name}}"
-                                 :user-id="{{auth()->user()->id}}"
-                                 :receiver-id="{{$advertisement->user->id}}"
-                                 :ad-id="{{$advertisement->id}}"
+                                     :user-id="{{auth()->user()->id}}"
+                                     :receiver-id="{{$advertisement->user->id}}"
+                                     :ad-id="{{$advertisement->id}}"
                             ></message>
                         @endif
                     @endif
