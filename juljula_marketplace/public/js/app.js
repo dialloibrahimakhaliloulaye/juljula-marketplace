@@ -2203,7 +2203,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['adId', 'userId'],
+  data: function data() {
+    return {
+      saveBtn: true
+    };
+  },
+  methods: {
+    saveAd: function saveAd() {
+      var _this = this;
+
+      axios.post('/ad/save', {
+        adId: this.adId,
+        userId: this.userId
+      }).then(function (response) {
+        _this.saveBtn = false;
+      })["catch"](function (err) {
+        alert('Error !!!');
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -61071,22 +61093,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "btn btn-info" }, [
-        _c("i", { staticClass: "fas fa-heart" }, [
-          _vm._v(" Sauvegarder cette annonce")
+  return _c("div", [
+    _vm.saveBtn
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-info",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.saveAd()
+              }
+            }
+          },
+          [
+            _c("i", { staticClass: "fas fa-heart" }, [
+              _vm._v(" Sauvegarder cette annonce")
+            ])
+          ]
+        )
+      : _c("p", { staticClass: "alert alert-success" }, [
+          _vm._v(" Annonce enregistrée avec succès")
         ])
-      ])
-    ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
