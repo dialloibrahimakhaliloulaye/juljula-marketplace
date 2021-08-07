@@ -49,6 +49,10 @@
                                     <button type="submit" class="btn btn-danger">Se connecter</button>
                                 </div>
                             </div>
+                            <hr>
+                            <a href="{{url('auth/facebook')}}" style="color: blue">
+                                Se connecter via facebook
+                            </a>
                         </form>
                     </div>
                 </div>

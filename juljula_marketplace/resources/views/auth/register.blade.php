@@ -57,6 +57,10 @@
                                 </div>
                             </div>
                         </form>
+                        <hr>
+                        <a href="{{url('auth/facebook')}}" style="color: blue">
+                            Se connecter via facebook
+                        </a>
                     </div>
                 </div>
             </div>
