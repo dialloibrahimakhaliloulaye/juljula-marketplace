@@ -135,4 +135,5 @@ class AdvertisementController extends Controller
             ->where('published', 0)->get();
         return view('ads.pending', compact('ads'));
     }
+
 }

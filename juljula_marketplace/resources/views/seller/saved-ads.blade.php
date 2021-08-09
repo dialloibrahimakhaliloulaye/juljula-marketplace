@@ -13,6 +13,7 @@
                         <th scope="col">#</th>
 
                         <th scope="col">Nom</th>
+                        <th scope="col">supprimer</th>
 
                     </tr>
                     </thead>
@@ -23,6 +24,12 @@
                             <th scope="row">{{$key+1}}</th>
                             <td>
                                 <a href="{{route('ads.show',[$ad->id, $ad->slug])}}" target="_blank">{{$ad->name}}</a>
+                            </td>
+                            <td>
+                                <form action="{{route('remove.ad')}}" method="post">@csrf
+                                    <input type="hidden" name="adId" value="{{$ad->id}}">
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                                </form>
                             </td>
                         </tr>
                     @empty

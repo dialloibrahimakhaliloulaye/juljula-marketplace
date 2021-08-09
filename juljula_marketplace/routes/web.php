@@ -74,3 +74,4 @@ Route::get('auth/facebook/callback', 'App\Http\Controllers\SocialLoginController
 //save ad
 Route::post('/ad/save', 'App\Http\Controllers\SaveAdController@saveAd');
 Route::get('/saved-ads', 'App\Http\Controllers\SaveAdController@getSaveAd')->name('saved.ad');
+Route::post('/ad/remove', 'App\Http\Controllers\SaveAdController@removeAd')->name('remove.ad');
