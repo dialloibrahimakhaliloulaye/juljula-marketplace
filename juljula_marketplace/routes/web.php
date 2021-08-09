@@ -60,7 +60,7 @@ Route::get('products/{id}/{slug}', 'App\Http\Controllers\FrontendController@show
 
 //Message
 Route::post('/send/message', 'App\Http\Controllers\SendMessageController@store');
-Route::get('/messages', 'App\Http\Controllers\SendMessageController@index')->middleware('auth');
+Route::get('/messages', 'App\Http\Controllers\SendMessageController@index')->name('messages')->middleware('auth');
 Route::get('/users', 'App\Http\Controllers\SendMessageController@chatWithThisUser');
 Route::get('/message/user/{id}', 'App\Http\Controllers\SendMessageController@showMessages');
 Route::post('/start-conversation', 'App\Http\Controllers\SendMessageController@startConversation');
@@ -71,3 +71,4 @@ Route::get('auth/facebook/callback', 'App\Http\Controllers\SocialLoginController
 
 //save ad
 Route::post('/ad/save', 'App\Http\Controllers\SaveAdController@saveAd');
+Route::get('/saved-ads', 'App\Http\Controllers\SaveAdController@getSaveAd')->name('saved.ad');
