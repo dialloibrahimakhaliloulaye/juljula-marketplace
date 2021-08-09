@@ -52,10 +52,17 @@
                 </div>
             </li>
             <li class="nav-item2">
+                <a class="nav-link" href="{{route('all.ads')}}" aria-expanded="false">
+                    <i class="mdi mdi-view-headline menu-icon"></i>
+                    <span class="menu-title">Les annonces</span>
+                    <i class="menu-arrow"></i>
+                </a>
+            </li>
+            <li class="nav-item2">
                 <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
                    aria-controls="ui-basic2">
                     <i class="mdi mdi-circle-outline menu-icon"></i>
-                    <span class="menu-title">UI Elements 2</span>
+                    <span class="menu-title">something</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="ui-basic2">
