@@ -12,6 +12,7 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
+                                        <th>Vendeur</th>
                                         <th>Image</th>
                                         <th>Nom</th>
                                         <th>Voir</th>
@@ -22,6 +23,14 @@
                                     <tbody>
                                     @forelse($ads as $ad)
                                         <tr>
+                                            <td>
+                                                @if($ad->user->avatar)
+                                                    <img src="{{Storage::url($ad->user->avatar)}}" width="120">
+                                                @else
+                                                    <img src="/img/man.jpg" width="120">
+                                                @endif
+                                                    <a target="_blank" href="{{route('show.user.ads', $ad->user->id)}}">{{$ad->user->name}}</a>
+                                            </td>
                                             <td><img src="{{Storage::url($ad->first_image)}}" alt=""></td>
                                             <td>{{$ad->name}}</td>
                                             <td>
@@ -80,6 +89,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            {{ $ads->links() }}
         </div>
     </div>
 @endsection
