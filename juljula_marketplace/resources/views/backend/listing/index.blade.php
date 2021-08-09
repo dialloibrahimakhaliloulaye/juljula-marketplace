@@ -15,8 +15,8 @@
                                         <th>Vendeur</th>
                                         <th>Image</th>
                                         <th>Nom</th>
+                                        <th>Date publication</th>
                                         <th>Voir</th>
-                                        <th>Editer</th>
                                         <th>Supprimer</th>
                                     </tr>
                                     </thead>
@@ -33,15 +33,10 @@
                                             </td>
                                             <td><img src="{{Storage::url($ad->first_image)}}" alt=""></td>
                                             <td>{{$ad->name}}</td>
+                                            <td>{{$ad->created_at->format('d-m-Y')}}</td>
                                             <td>
                                                 <a target="_blank" href="{{route('ads.show', [$ad->id, $ad->slug])}}">
                                                     <button class="btn btn-sm btn-info"><i class="mdi mdi-details"></i>
-                                                    </button>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="{{route('ads.edit', [$ad->id])}}">
-                                                    <button class="btn btn-sm btn-info"><i class="mdi mdi-table-edit"></i>
                                                     </button>
                                                 </a>
                                             </td>
