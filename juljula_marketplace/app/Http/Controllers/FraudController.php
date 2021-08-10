@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fraud;
 use Illuminate\Http\Request;
+use App\Models\Advertisement;
 
 class FraudController extends Controller
 {
@@ -16,5 +17,12 @@ class FraudController extends Controller
             'ad_id'=>$request->ad_id
         ]);
         return back()->with('message', 'Votre requête a été soumise avec succès');
+    }
+
+    // for admin
+    public function index()
+    {
+        $ads=Fraud::paginate(10);
+        return view('backend.fraud.index', compact('ads'));
     }
 }
