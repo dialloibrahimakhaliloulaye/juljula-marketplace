@@ -71,7 +71,7 @@
                         <show-phone-number :phone-number="{{$advertisement->phone_number}}"></show-phone-number>
                     @endif
                 </p>
-                <span>
+                <p>
                     @if(Auth()->check())
                         @if(auth()->user()->id!=$advertisement->user->id)
                             <message seller-name="{{$advertisement->user->name}}"
@@ -81,7 +81,47 @@
                             ></message>
                         @endif
                     @endif
-                </span>
+                    <span>
+                        <a href="" class="" data-toggle="modal" data-target="#exampleModal">Signaler cette annonce</a>
+                        <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Signaler cette annonce à notre equipe</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="">Choisir la raison</label>
+                                    <select name="reason" id="" class="form-control">
+                                        <option value="fraude">Fraude</option>
+                                        <option value="duplication">Duplication</option>
+                                        <option value="mauvaise-catégorie">Mauvaise catégorie</option>
+                                        <option value="offensive">Offensive</option>
+                                        <option value="autres">Autres</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Votre email</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Votre message</label>
+                                    <textarea name="message" id="" cols="30" rows="10" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </span>
+                </p>
             </div>
         </div>
     </div>
