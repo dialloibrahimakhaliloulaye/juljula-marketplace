@@ -84,8 +84,7 @@
                     <span>
                         <a href="" class="" data-toggle="modal" data-target="#exampleModal">Signaler cette annonce</a>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <form action="{{route('report.ad')}}" method="post">@csrf
                                     <div class="modal-content">
@@ -99,6 +98,7 @@
                                             <div class="form-group">
                                                 <label for="">Choisir la raison</label>
                                                 <select name="reason" id="" class="form-control">
+                                                    <option value="">Choisir</option>
                                                     <option value="fraude">Fraude</option>
                                                     <option value="duplication">Duplication</option>
                                                     <option value="mauvaise-catégorie">Mauvaise catégorie</option>
@@ -129,6 +129,9 @@
                                 </form>
                             </div>
                         </div>
+                        @if(Session::has('message'))
+                            <span class="alert alert-success">{{Session::get('message')}}</span>
+                        @endif
                     </span>
                 </p>
             </div>
