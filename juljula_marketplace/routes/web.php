@@ -78,3 +78,6 @@ Route::get('auth/facebook/callback', 'App\Http\Controllers\SocialLoginController
 Route::post('/ad/save', 'App\Http\Controllers\SaveAdController@saveAd');
 Route::get('/saved-ads', 'App\Http\Controllers\SaveAdController@getSaveAd')->name('saved.ad');
 Route::post('/ad/remove', 'App\Http\Controllers\SaveAdController@removeAd')->name('remove.ad');
+
+//report ads
+Route::post('/report-this-ad', 'App\Http\Controllers\FraudController@store')->name('report.ad');
