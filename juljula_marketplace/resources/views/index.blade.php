@@ -34,7 +34,7 @@
             @foreach($categories as $category)
                 <div class="col-lg-3 col-md-4 col-lg" id="categorie">
                     <a href="{{route('category.show', $category->slug)}}" class="d-block mb-4 h-100">
-                        <img src="{{Storage::url($category->image)}}" class="img-fluid img-thumbnail" alt="">
+                        <img src="{{Storage::url($category->image)}}" class="img-fluid img-thumbnail" width="110">
                         <p>{{$category->name}}</p>
                     </a>
                 </div>
