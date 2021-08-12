@@ -28,7 +28,19 @@
             </a>
         </div>
     </div>
-
+    <div class="container mt-5">
+        <h2>Top catégories</h2>
+        <div class="row text-center mt-5">
+            @foreach($categories as $category)
+                <div class="col-lg-3 col-md-4 col-lg" id="categorie">
+                    <a href="{{route('category.show', $category->slug)}}" class="d-block mb-4 h-100">
+                        <img src="{{Storage::url($category->image)}}" class="img-fluid img-thumbnail" alt="">
+                        <p>{{$category->name}}</p>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
     <div class="container mt-5">
         <span>
             <h2>Multimédia</h2>
@@ -142,3 +154,10 @@
         </div>
     </div>
 @endsection
+
+<style>
+    #categorie a:hover{
+        background-color: #30c93e;
+        color: white;
+    }
+</style>

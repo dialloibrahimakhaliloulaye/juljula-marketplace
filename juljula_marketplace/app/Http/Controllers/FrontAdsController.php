@@ -20,7 +20,10 @@ class FrontAdsController extends Controller
         $firstAdsForImmobiliers=Advertisement::firstFourImmobiliers($categoryImmobiliers->id);
         $secondAdsForImmobiliers=Advertisement::secondFourImmobiliers($categoryImmobiliers->id);
 
+        $categories=Category::get();
+
         return view('index', compact('firstAds',
-            'secondAds', 'category', 'categoryImmobiliers', 'firstAdsForImmobiliers', 'secondAdsForImmobiliers'));
+            'secondAds', 'category', 'categoryImmobiliers', 'firstAdsForImmobiliers',
+            'secondAdsForImmobiliers', 'categories'));
     }
 }
