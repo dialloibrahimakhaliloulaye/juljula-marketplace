@@ -20,6 +20,7 @@
                 <br>
             </div>
             <div class="col-md-9">
+                @include('breadcrumb')
                 <div class="row">
                     @forelse($advertisements as $advertisement)
                         <div class="col-3">
