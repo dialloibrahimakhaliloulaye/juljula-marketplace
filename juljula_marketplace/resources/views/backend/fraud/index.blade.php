@@ -21,27 +21,30 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($ads as $ad)
+                                    @forelse($frds as $frd)
                                         <tr>
-                                           <td>{{$ad->created_at->format('d-m-Y')}}</td>
-                                            <td>{{$ad->email}}</td>
-                                            <td>{{$ad->reason}}</td>
-                                            <td>{{$ad->message}}</td>
+                                           <td>{{$frd->created_at->format('d-m-Y')}}</td>
+                                            <td>{{$frd->email}}</td>
+                                            <td>{{$frd->reason}}</td>
+                                            <td>{{$frd->message}}</td>
                                             <td>
-                                                voir
+                                                <a target="_blank" href="{{route('ads.show', [$frd->ad_id, $frd->fraudAd->slug])}}">
+                                                    <button class="btn btn-sm btn-info"><i class="mdi mdi-details"></i>
+                                                    </button>
+                                                </a>
                                             </td>
                                             <td>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                                                        data-target="#exampleModal{{$ad->id}}">
+                                                        data-target="#exampleModal{{$frd->ad_id}}">
                                                     <i class="mdi mdi-delete"></i>
                                                 </button>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal{{$ad->id}}" tabindex="-1"
+                                                <div class="modal fade" id="exampleModal{{$frd->ad_id}}" tabindex="-1"
                                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
-                                                        <form action="{{route('ads.destroy', $ad->id)}}" method="post">@csrf @method('DELETE')
+                                                        <form action="{{route('ads.destroy', $frd->ad_id)}}" method="post">@csrf @method('DELETE')
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
@@ -50,18 +53,16 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Voulez vous vraiment supprimer "{{$ad->name}}", cette action est irreversible
+                                                                    Voulez vous vraiment supprimer "{{$frd->fraudAd->name}}", cette action est irreversible
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                                     <button type="submit" class="btn btn-danger">Supprimer</button>
                                                                 </div>
                                                             </div>
-                                                            <form action="" method="post">@csrf @method('DELETE')
+                                                        </form>
                                                     </div>
                                                 </div>
-
-
                                             </td>
                                         </tr>
                                     @empty
@@ -76,7 +77,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            {{ $ads->links() }}
+            {{ $frds->links() }}
         </div>
     </div>
 @endsection

@@ -22,7 +22,7 @@ class FraudController extends Controller
     // for admin
     public function index()
     {
-        $ads=Fraud::paginate(10);
-        return view('backend.fraud.index', compact('ads'));
+        $frds=Fraud::paginate(10);
+        return view('backend.fraud.index', compact('frds'));
     }
 }
