@@ -59,23 +59,13 @@
                 </a>
             </li>
             <li class="nav-item2">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false"
-                   aria-controls="ui-basic2">
-                    <i class="mdi mdi-circle-outline menu-icon"></i>
-                    <span class="menu-title">something</span>
+                <a class="nav-link" href="{{route('reported.ads')}}" aria-expanded="false">
+                    <i class="mdi mdi-chart-pie menu-icon"></i>
+                    <span class="menu-title">Annonces signalées</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="ui-basic2">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Buttons1</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                                href="pages/ui-features/typography.html">Typography1</a></li>
-                    </ul>
-                </div>
             </li>
-
-
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="pages/forms/basic_elements.html">
                     <i class="mdi mdi-view-headline menu-icon"></i>
                     <span class="menu-title">Form elements</span>
@@ -122,7 +112,7 @@
                     <i class="mdi mdi-file-document-box-outline menu-icon"></i>
                     <span class="menu-title">Documentation</span>
                 </a>
-            </li>
+            </li>-->
         </ul>
     </nav>
 
